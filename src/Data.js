@@ -44,6 +44,9 @@ const Data = {
         population: item.population,
         languages: item.languages,
         id: item.area,
+        currency: item.currencies,
+        borders: item.borders,
+        domain: item.topLevelDomain,
       };
     });
     return filteredData;

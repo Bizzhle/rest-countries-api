@@ -6,6 +6,9 @@ module.exports = {
       "nunito-sans": '"Nunito Sans", sans-serif',
     },
     extend: {
+      screens: {
+        dark: { raw: "(prefers-color-scheme: dark)" },
+      },
       colors: {
         primary: {
           "v-dark-blue": "#111517",

@@ -7,7 +7,7 @@ export default function SelectBar({ sort, order, handleSort }) {
         name="order"
         value={order}
         onChange={handleSort}
-        className="p-1 border-2 w-48 rounded-md dark:text-primary-white"
+        className="p-2 w-48 rounded-md dark:text-primary-white bg-primary-white dark:bg-secondary-dark-blue "
       >
         <option value={0}>Chose filter option</option>
         <option value={1}>Sort by ascending order (name)</option>

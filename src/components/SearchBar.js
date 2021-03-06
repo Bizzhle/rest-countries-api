@@ -3,8 +3,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 export default function SearchBar(props) {
   return (
-    <div className="w-64 md:w-80  flex bg-primary-white border-2 rounded-md">
-      <button className="p-1 cursor-pointer border-r-0 focus:outline-none dark:text-primary-white">
+    <div className="w-full p-4 md:w-80 flex bg-primary-white dark:bg-secondary-dark-blue  rounded-md">
+      <button className="p-1 cursor-pointer border-r-0 focus:outline-none dark:text-primary-white dark:bg-secondary-dark-blue">
         <AiOutlineSearch
           onClick={() => props.handleSearch(props.filterQuery)}
         />

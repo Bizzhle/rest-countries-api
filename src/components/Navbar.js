@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaRegMoon } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { ThemeContext } from "./themeContext";
 
-export default function Navbar() {
+export default function Navbar(props) {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  function isDark() {
+    return theme === "dark";
+  }
+  console.log(theme);
+
   return (
-    <div className="flex justify-between py-4 font-nunito-sans border-b bg-primary-white dark:bg-secondary-dark-blue dark:text-primary-white">
-      <span className="font-bold mx-4 md:mx-8 ">Where in the world?</span>
-      <div className="flex mx-4 md:mx-8 ">
-        <FaRegMoon className="mr-1 font-semibold" />
-        Dark mode
-      </div>
+    <div className="flex justify-between py-4 font-nunito-sans  bg-primary-white dark:bg-secondary-dark-blue dark:text-primary-white">
+      <Link to="/" exact="true">
+        <span
+          className="font-bold mx-4 md:mx-8"
+          onClick={() => props.filterQuery}
+        >
+          Where in the world?
+        </span>
+      </Link>
+
+      <label className="theme-switch">
+        <input
+          type="checkbox"
+          checked={isDark()}
+          onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
+        />
+        <div className="slider round"></div>
+      </label>
     </div>
   );
 }

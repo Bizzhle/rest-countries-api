@@ -4,11 +4,10 @@ import Home from "./components/Home";
 import SingleDisplay from "./components/SingleDisplay";
 import Data from "./Data";
 import Filter from "./Filter";
-import { ThemeProvider } from "./components/themeContext";
 
 function App() {
   const [data, setData] = useState([]);
-  // const [currentItem, setCurrentItem] = useState([]);
+  const [currentItem, setCurrentItem] = useState([]);
   const [filterQuery, setFilterQuery] = useState("");
   const [sortedData, setSortedData] = useState([]);
   const [order, setOrder] = useState(0);
@@ -24,6 +23,7 @@ function App() {
     const keyword = e.target.value;
     setFilterQuery(keyword);
   }
+  console.log(filterQuery);
 
   // Captures input from select box and stores the value in state
   const handleSort = (e) => {
@@ -31,12 +31,12 @@ function App() {
   };
 
   // used to select a specific country
-  // function handleClick(id) {
-  //   const filteredItem = data.filter((item) => item.id === id);
-  //   setCurrentItem(filteredItem);
-  //   console.log(filteredItem);
-  // }
-  // console.log(currentItem);
+  function handleClick(id) {
+    const filteredItem = data.filter((item) => item.id === id);
+    setCurrentItem(filteredItem);
+    console.log(filteredItem);
+  }
+  console.log(currentItem);
 
   // Function takes the search query term from state as a paramter, it returns the API response and updates the data state
   function handleSearch() {
@@ -44,6 +44,8 @@ function App() {
       item.name.toLowerCase().includes(filterQuery.toLowerCase())
     );
     setData(filteredItems);
+
+    console.log(filterQuery);
   }
 
   function sort(order) {
@@ -63,7 +65,7 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
+    <>
       <BrowserRouter>
         <Switch>
           <Route path="/" exact>
@@ -73,6 +75,7 @@ function App() {
               filterQuery={filterQuery}
               order={order}
               sort={sort}
+              handleClick={handleClick}
               handleChange={handleChange}
               handleSearch={handleSearch}
               handleSort={handleSort}
@@ -90,8 +93,6 @@ function App() {
           ></Route>
         </Switch>
       </BrowserRouter>
-    </ThemeProvider>
+    </>
   );
 }
-
-export default App;
