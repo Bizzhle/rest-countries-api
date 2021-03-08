@@ -11,15 +11,8 @@ function App() {
   // const [currentItem, setCurrentItem] = useState([]);
   const [filterQuery, setFilterQuery] = useState("");
   const [sortedData, setSortedData] = useState([]);
-  const [order, setOrder] = useState(0);
+  const [order, setOrder] = useState("");
 
-  useEffect(() => {
-    Data.getData().then((response) => {
-      setData(response);
-    });
-  }, [filterQuery]);
-
-  // Captures input from search bar and stores the value as state
   function handleChange(e) {
     const keyword = e.target.value;
     setFilterQuery(keyword);
@@ -30,37 +23,47 @@ function App() {
     setOrder(e.target.value);
   };
 
-  // used to select a specific country
-  // function handleClick(id) {
-  //   const filteredItem = data.filter((item) => item.id === id);
-  //   setCurrentItem(filteredItem);
-  //   console.log(filteredItem);
-  // }
-  // console.log(currentItem);
-
   // Function takes the search query term from state as a paramter, it returns the API response and updates the data state
   function handleSearch() {
     const filteredItems = data.filter((item) =>
       item.name.toLowerCase().includes(filterQuery.toLowerCase())
     );
     setData(filteredItems);
+    console.log(filteredItems);
   }
 
-  function sort(order) {
-    if (order === "1") {
-      const newOrder = Filter.nameAsc(data);
-      setSortedData(newOrder);
-    } else if (order === "2") {
-      const newOrder = Filter.nameDsc(data);
-      setSortedData(newOrder);
-    } else if (order === "3") {
-      const newOrder = Filter.populationAsc(data);
-      setSortedData(newOrder);
-    } else if (order === "4") {
-      const newOrder = Filter.populationDsc(data);
-      setSortedData(newOrder);
+  // filter by region
+  function handleSelect(order) {
+    if (order) {
+      const newOrder = data.filter((item) =>
+        item.region.toLowerCase().includes(order)
+      );
+      setData(newOrder);
+      console.log(newOrder);
+      console.log(data);
     }
   }
+
+  console.log(order);
+
+  useEffect(() => {
+    Data.getData().then((response) => {
+      setData(response);
+    });
+  }, [filterQuery, order]);
+
+  // Captures input from search bar and stores the value as state
+
+  // used to select a specific country
+  // function handleClick(id) {
+  //   const searchRegion = data.filter(
+  //     (country) =>
+  //       country.region === Region &&
+  //       country.name.toLowerCase().includes(filterQuery.toLowerCase())
+  //   );
+  //   setData(searchRegion);
+  //   console.log(searchRegion);
+  // }
 
   return (
     <ThemeProvider>
@@ -72,7 +75,7 @@ function App() {
               sortedData={sortedData}
               filterQuery={filterQuery}
               order={order}
-              sort={sort}
+              handleSelect={handleSelect}
               handleChange={handleChange}
               handleSearch={handleSearch}
               handleSort={handleSort}

@@ -33,8 +33,9 @@ export default function Home(props) {
         <div>
           <SelectBar
             handleSort={props.handleSort}
-            sort={props.sort}
+            handleSelect={props.handleSelect}
             order={props.order}
+            data={props.data}
             sortedData={props.sortedData}
           />
         </div>

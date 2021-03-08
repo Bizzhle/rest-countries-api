@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { FaRegMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "./themeContext";
 
@@ -9,10 +8,9 @@ export default function Navbar(props) {
   function isDark() {
     return theme === "dark";
   }
-  console.log(theme);
 
   return (
-    <div className="flex justify-between py-4 font-nunito-sans  bg-primary-white dark:bg-secondary-dark-blue dark:text-primary-white">
+    <div className="flex justify-between py-4 px-4  font-nunito-sans  bg-primary-white dark:bg-secondary-dark-blue dark:text-primary-white">
       <Link to="/" exact="true">
         <span
           className="font-bold mx-4 md:mx-8"
@@ -22,7 +20,7 @@ export default function Navbar(props) {
         </span>
       </Link>
 
-      <label className="theme-switch">
+      <label className="theme-switch mx-4 md:mx-8">
         <input
           type="checkbox"
           checked={isDark()}

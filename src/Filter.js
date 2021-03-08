@@ -1,7 +1,7 @@
 const Filter = {
   // sort countries by name (asc)
   nameAsc(arr) {
-    const newOrder = arr.sort((a, b) => (a.name > b.name ? 1 : -1));
+    const newOrder = arr.filter((a, b) => a.region === b);
     return newOrder;
   },
 
@@ -28,5 +28,4 @@ const Filter = {
   },
 };
 
-
-export default Filter
+export default Filter;

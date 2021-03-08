@@ -41,12 +41,12 @@ export default function SingleDisplay(props) {
   }
 
   return (
-    <div className="min-h-screen bg-primary-v-light-gray dark:bg-secondary-v-dark-blue text-primary-dark-gray dark:text-primary-white font-nunito-sans">
+    <div className="min-h-screen bg-primary-v-light-gray dark:bg-secondary-v-dark-blue font-nunito-sans">
       <Navbar />
       <Link to="/" exact="true">
         <button
           onClick={props.restart}
-          className="m-4 md:m-12 px-5 py-2 bg-primary-white dark:bg-secondary-dark-blue focus:outline-none font-semibold shadow-2xl rounded inline-flex items-center"
+          className="m-4 md:m-12 px-5 py-2 bg-primary-white dark:bg-secondary-dark-blue text-primary-dark-gray dark:text-primary-white font-semibold shadow-2xl rounded inline-flex items-center"
         >
           <BsArrowLeft className="w-4 h-4 mr-2 " />
           back
@@ -69,7 +69,10 @@ export default function SingleDisplay(props) {
         } = value;
 
         return (
-          <div key={numericCode} className="mx-4 md:mx-12">
+          <div
+            key={numericCode}
+            className="mx-4 md:mx-12 dark:text-primary-white"
+          >
             <figure className="grid md:grid-cols-2 md:gap-24">
               <img
                 src={flag}

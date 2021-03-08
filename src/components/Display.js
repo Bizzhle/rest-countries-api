@@ -1,6 +1,9 @@
 import React from "react";
 
 export default function Display(props) {
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
     <div className="">
       <div className="bg-primary-white dark:bg-secondary-dark-blue rounded-md shadow">
@@ -16,7 +19,7 @@ export default function Display(props) {
           <p className="text-sm dark:text-primary-white">
             <span className="font-bold"> Population: </span>
             <span className=" text-primary-dark-gray dark:text-primary-white">
-              {props.card.population}
+              {numberWithCommas(props.card.population)}
             </span>
           </p>
           <p className="text-sm font-bold">
