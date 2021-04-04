@@ -15,7 +15,7 @@ export default function SearchBar(props) {
         name="filterQuery"
         value={props.filterQuery}
         onChange={props.handleChange}
-        onInput={() => props.handleSearch(props.filterQuery)}
+        onKeyUp={() => props.handleSearch(props.filterQuery)}
         aria-label="Filter countries by name"
         className=" p-1 w-80 border-l-0 bg-primary-white dark:bg-secondary-dark-blue outline-none dark:text-primary-white"
       />

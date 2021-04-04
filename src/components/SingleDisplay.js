@@ -15,7 +15,6 @@ export default function SingleDisplay(props) {
       );
       const country = await response.json();
       setCountry(country);
-      console.log(country);
     };
 
     fetchCountryData();

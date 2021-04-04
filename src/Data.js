@@ -9,7 +9,7 @@ const Data = {
       return {
         name: item.name,
         native: item.nativeName,
-        image: item.flag,
+        flag: item.flag,
         region: item.region,
         subRegion: item.subregion,
         callingCodes: item.callingCodes,
@@ -28,15 +28,15 @@ const Data = {
 
   // Returns data based on the search query passed in
 
-  async searchCountry(name) {
+  async searchCountry(term) {
     const response = await fetch(
-      `https://restcountries.eu/rest/v2/name/${name}`
+      `https://restcountries.eu/rest/v2/name/${term}`
     );
     const data = await response.json();
     const filteredData = data.map((item) => {
       return {
         name: item.name,
-        image: item.flag,
+        flag: item.flag,
         region: item.region,
         subRegion: item.subregion,
         callingCodes: item.callingCodes,

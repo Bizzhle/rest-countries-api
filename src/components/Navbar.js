@@ -11,14 +11,9 @@ export default function Navbar(props) {
 
   return (
     <div className="flex justify-between py-4 px-4  font-nunito-sans  bg-primary-white dark:bg-secondary-dark-blue dark:text-primary-white">
-      <Link to="/" exact="true">
-        <span
-          className="font-bold mx-4 md:mx-8"
-          onClick={() => props.filterQuery}
-        >
-          Where in the world?
-        </span>
-      </Link>
+      <button className="font-bold mx-4 md:mx-8" onClick={props.reset}>
+        Where in the world?
+      </button>
 
       <label className="theme-switch mx-4 md:mx-8">
         <input

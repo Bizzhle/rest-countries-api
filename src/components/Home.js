@@ -10,18 +10,14 @@ export default function Home(props) {
   const cards = props.data.map((card) => {
     return (
       <Link to={"/display/" + card.name} key={card.name}>
-        <Display
-          key={Math.random()}
-          card={card}
-          handleClick={props.handleClick}
-        />
+        <Display key={Math.random()} card={card} />
       </Link>
     );
   });
 
   return (
     <div className="min-h-screen bg-primary-v-light-gray dark:bg-secondary-v-dark-blue font-nunito-sans">
-      <Navbar filterQuery={props.filterQuery} />
+      <Navbar filterQuery={props.filterQuery} reset={props.reset} />
       <div className=" md:flex justify-between mx-12 my-8">
         <div className="mb-8">
           <SearchBar
@@ -40,7 +36,7 @@ export default function Home(props) {
           />
         </div>
       </div>
-      <div className=" grid grid-cols-1 md:grid-cols-4 gap-12 mx-12">
+      <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-12 mx-12">
         {cards}
       </div>
     </div>

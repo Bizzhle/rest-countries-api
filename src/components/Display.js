@@ -8,7 +8,7 @@ export default function Display(props) {
     <div className="">
       <div className="bg-primary-white dark:bg-secondary-dark-blue rounded-md shadow">
         <img
-          src={props.card.image}
+          src={props.card.flag}
           alt={props.card.label}
           className="rounded-t-md h-auto w-auto"
         />
