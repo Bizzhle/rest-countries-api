@@ -16,7 +16,7 @@ function App() {
       return getData();
     } else {
       const response = await fetch(
-        `https://restcountries.eu/rest/v2/region/${region}`
+        `https://restcountries.eu/rest/v3.1/region/${region}`
       );
       const data = await response.json();
       setData(data);
@@ -29,7 +29,7 @@ function App() {
       return getData();
     } else {
       const response = await fetch(
-        `https://restcountries.eu/rest/v2/name/${name}`
+        `https://restcountries.eu/rest/v3.1/name/${name}`
       );
       const data = await response.json();
       setData(data);
@@ -38,14 +38,14 @@ function App() {
   }
 
   async function reset() {
-    const response = await fetch("https://restcountries.eu/rest/v2/all");
+    const response = await fetch("https://restcountries.eu/rest/v3.1/all");
     const data = await response.json();
     setData(data);
     setFilterQuery("");
   }
 
   async function getData() {
-    const response = await fetch("https://restcountries.eu/rest/v2/all");
+    const response = await fetch("https://restcountries.eu/rest/v3.1/all");
     const data = await response.json();
     setData(data);
   }
