@@ -2,7 +2,7 @@ const Data = {
   // Gets all the countries on the API
 
   async getData() {
-    const response = await fetch("https://restcountries.eu/rest/v2/all");
+    const response = await fetch("https://restcountries.eu/rest/v3.1/all");
 
     const data = await response.json();
     const filteredData = data.map((item) => {
@@ -30,7 +30,7 @@ const Data = {
 
   async searchCountry(term) {
     const response = await fetch(
-      `https://restcountries.eu/rest/v2/name/${term}`
+      `https://restcountries.eu/rest/v3.1/name/${term}`
     );
     const data = await response.json();
     const filteredData = data.map((item) => {
