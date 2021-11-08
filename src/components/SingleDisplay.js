@@ -2,19 +2,16 @@ import React, { useState, useEffect } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import Navbar from "./Navbar";
 import { Link, useParams } from "react-router-dom";
-import Data from "../Data";
 
 export default function SingleDisplay(props) {
   const [country, setCountry] = useState([]);
-  const { name } = useParams();
+  const { name, code } = useParams();
 
   useEffect(() => {
     const fetchCountryData = async () => {
-      const response = await fetch(
-        `https://restcountries.eu/rest/v3.1/name/${name}`
-      );
-      const country = await response.json();
-      setCountry(country);
+      const response = await fetch(`https://restcountries.com/v2/name/${name}`);
+      const data = await response.json();
+      setCountry(data);
     };
 
     fetchCountryData();
@@ -120,16 +117,20 @@ export default function SingleDisplay(props) {
                 <div className="mt-12 flex flex-wrap items-center">
                   <span className="font-semibold">Borders:</span>
 
-                  {borders.map((v, i) => (
-                    <Link to={"/display/" + name} key={i}>
-                      <button
-                        key={i}
-                        className="mx-1 my-1 px-5 py-1 border rounded-sm"
-                      >
-                        {v}
-                      </button>
-                    </Link>
-                  ))}
+                  {borders ? (
+                    borders.map((v, i) => (
+                      <Link to={"/display/" + name} key={i}>
+                        <button
+                          key={i}
+                          className="mx-1 my-1 px-5 py-1 border rounded-sm"
+                        >
+                          {v}
+                        </button>
+                      </Link>
+                    ))
+                  ) : (
+                    <p className="px-3">There are no bordering countries</p>
+                  )}
                 </div>
               </figcaption>
             </figure>

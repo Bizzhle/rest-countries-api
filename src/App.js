@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import SingleDisplay from "./components/SingleDisplay";
 // import axios from "axios";
-// import Data from "./Data";
+
 import { ThemeProvider } from "./components/themeContext";
 
 function App() {
@@ -16,11 +16,10 @@ function App() {
       return getData();
     } else {
       const response = await fetch(
-        `https://restcountries.com/v3.1/region/${region}`
+        `https://restcountries.com/v2/region/${region}`
       );
       const data = await response.json();
       setData(data);
-      console.log(data);
     }
   }
 
@@ -28,24 +27,21 @@ function App() {
     if (filterQuery === "") {
       return getData();
     } else {
-      const response = await fetch(
-        `https://restcountries.com/v3.1/name/${name}`
-      );
+      const response = await fetch(`https://restcountries.com/v2/name/${name}`);
       const data = await response.json();
       setData(data);
-      console.log(data);
     }
   }
 
   async function reset() {
-    const response = await fetch("https://restcountries.com/v3.1/all");
+    const response = await fetch("https://restcountries.com/v2/all");
     const data = await response.json();
     setData(data);
     setFilterQuery("");
   }
 
   async function getData() {
-    const response = await fetch("https://restcountries.com/v3.1/all");
+    const response = await fetch("https://restcountries.com/v2/all");
     const data = await response.json();
     setData(data);
   }
@@ -57,7 +53,6 @@ function App() {
   function handleChange(e) {
     e.preventDefault();
     setFilterQuery(e.target.value);
-    console.log(filterQuery);
   }
 
   // Filter exmple (redundant)

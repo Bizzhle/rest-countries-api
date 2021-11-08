@@ -9,7 +9,7 @@ export default function Home(props) {
   const { name } = useParams();
   const cards = props.data.map((card) => {
     return (
-      <Link to={"/display/" + card.name} key={card.name}>
+      <Link to={"/display/" + card.name} key={Math.random()}>
         <Display key={Math.random()} card={card} />
       </Link>
     );
